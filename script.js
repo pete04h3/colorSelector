@@ -89,6 +89,12 @@ function showHsl(r, g, b) {
   s *= 100;
   l *= 100;
 
+  // Rounding the decimal numbers
+
+  h = Math.round((h * 100) / 100);
+  s = Math.round((s * 100) / 100);
+  l = Math.round((l * 100) / 100);
+
   document.querySelector("#hsl").textContent = `HSL: (${h}, ${s}%, ${l}%)`;
 
   console.log(h, s, l);
