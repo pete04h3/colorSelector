@@ -19,15 +19,39 @@ function start() {
 function showColor() {
   selectedColor = HTML.colorPicker.value;
 
-  document.querySelector("#hex").textContent = "HEX: " + selectedColor;
-  document.querySelector("#rgb").textContent = "RGB: " + selectedColor;
-  document.querySelector("#hsl").textContent = "HSL: " + selectedColor;
-
   HTML.colorContainer.dataset.color_selected = selectedColor;
 
   style.sheet.insertRule(`[data-color_selected="${selectedColor}"] {--selected_color: ${selectedColor}`);
 
-  console.log(HTML.colorPicker.value);
+  showHEX(selectedColor);
+}
+
+function showHEX(HEX) {
+  document.querySelector("#hex").textContent = "HEX: " + HEX;
+
+  console.log(HEX);
+  convertHEX(HEX);
+}
+
+function convertHEX(HEX) {
+  let r, g, b;
+
+  r = HEX.substring(1, 3);
+  g = HEX.substring(3, 5);
+  b = HEX.substring(5, 7);
+
+  r = Number.parseInt(r, 16);
+  g = Number.parseInt(g, 16);
+  b = Number.parseInt(b, 16);
+
+  console.log(r, g, b);
+  showRgb(r, g, b);
+}
+
+function showRgb(r, g, b) {
+  document.querySelector("#rgb").textContent = `RGB: (${r}, ${g}, ${b})`;
+
+  showHsl(r, g, b);
 }
 
 function showHsl(r, g, b) {
@@ -65,5 +89,7 @@ function showHsl(r, g, b) {
   s *= 100;
   l *= 100;
 
-  console.log("hsl(%f,%f%,%f%)", h, s, l); // just for testing
+  document.querySelector("#hsl").textContent = `HSL: (${h}, ${s}%, ${l}%)`;
+
+  console.log(h, s, l);
 }
