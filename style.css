@@ -1,0 +1,31 @@
+:root {
+  --selected_color: black;
+}
+
+input {
+  cursor: pointer;
+  margin-top: 10px;
+  background-color: #3f4041;
+}
+
+label {
+  margin-top: 10px;
+}
+
+#container {
+  text-align: center;
+  width: 200px;
+  height: 400px;
+  border-radius: 5px;
+  box-shadow: black;
+  background-color: #3f4041;
+}
+
+#color {
+  margin: 0 auto;
+  width: 80%;
+  height: 150px;
+  background-color: var(--selected_color);
+  border-radius: 5px;
+  margin-top: 10px;
+}
